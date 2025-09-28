@@ -1,0 +1,142 @@
+:root {
+  /* Backgrounds */
+  --bg: #0e0f12;        /* page background */
+  --bg-alt: #15181d;    /* cards/panels */
+  --bg-sidebar: #0a0c10;
+
+  /* Text */
+  --text: #f1f3f5;        /* primary */
+  --text-muted: #9ba1a6;  /* secondary */
+  --text-inverse: #000000;
+
+  /* Accent */
+  --accent: #3b82f6;       /* electric blue */
+  --accent-hover: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #2563eb, #3b82f6);
+
+  /* Status */
+  --success: #22c55e; /* green-500 */
+  --danger: #ef4444;  /* red-500 */
+  --warning: #eab308; /* amber-500 */
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+
+  /* Shadows (lighter glow for dark mode) */
+  --sh-sm: 0 1px 2px rgba(255,255,255,0.05);
+  --sh-md: 0 2px 6px rgba(255,255,255,0.08);
+
+  /* Spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+
+  /* Neon Accents */
+  --neon-accent-border: #4f8dfc;      /* slightly lighter than --accent */
+  --neon-accent-glow-1: rgba(59,130,246,0.6);
+  --neon-accent-glow-2: rgba(59,130,246,0.25);
+
+  --neon-mono-border: rgba(255,255,255,0.7);  /* white-ish in dark */
+  --neon-mono-glow-1: rgba(255,255,255,0.35);
+  --neon-mono-glow-2: rgba(255,255,255,0.15);
+
+  /* global glow defaults */
+  --global-glow-radius: 380px;
+  --global-glow-strength: 1;    /* 0..1 user scalar */
+  --global-glow-boost: 0.7;     /* 0..1 proximity boost */
+  --global-glow-x: 50%;
+  --global-glow-y: 50%;
+  --global-frame-width: 18px;
+
+  /* colors for dark */
+  --global-neon-accent: #4f8dfc;
+  --global-neon-accent-1: rgba(79,141,252,0.55);
+  --global-neon-accent-2: rgba(79,141,252,0.22);
+
+  --global-frame-inset: 10px;  /* distance from viewport edge */
+  --global-frame-radius: 16px;
+
+  /* intensity control (updated via JS) */
+  --global-glow-strength: 1; /* 0..1 */
+  --global-glow-boost: 0.7;  /* 0..1 extra near cursor/edges */
+
+  /* accent colors */
+  --global-neon: #4f8dfc;
+  --global-neon-1: rgba(79,141,252,0.55);
+  --global-neon-2: rgba(79,141,252,0.22);
+}
+
+/* Light theme override (optional) */
+:root[data-theme="light"] {
+  /* Backgrounds */
+  --bg: #f9fafb;        /* very light gray, softer than pure white */
+  --bg-alt: #ffffff;    /* cards/panels pop on bg */
+  --bg-sidebar: #f3f4f6; /* sidebar slightly distinct */
+
+  /* Text */
+  --text: #111213;        /* strong neutral */
+  --text-muted: #6b7280;  /* muted gray */
+  --text-inverse: #ffffff;
+
+  /* Accent */
+  --accent: #2563eb;        /* blue-600 */
+  --accent-hover: #1d4ed8;  /* blue-700 */
+  --accent-gradient: linear-gradient(135deg, #2563eb, #3b82f6);
+
+  /* Status */
+  --success: #16a34a;  /* green-600 */
+  --danger: #dc2626;   /* red-600 */
+  --warning: #ca8a04;  /* amber-600 */
+
+  /* Radii (same) */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+
+  /* Shadows (darker for light mode) */
+  --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --sh-md: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+  /* Spacing (same) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  
+  /* Neon Accents */
+  --neon-mono-border: rgba(0,0,0,0.6);       /* black-ish in light */
+  --neon-mono-glow-1: rgba(0,0,0,0.25);
+  --neon-mono-glow-2: rgba(0,0,0,0.12);
+
+  /* colors for light */
+  --global-neon-accent: #2563eb;
+  --global-neon-accent-1: rgba(37,99,235,0.45);
+  --global-neon-accent-2: rgba(37,99,235,0.18);
+  
+  /* accent colors */
+  --global-neon: #2563eb;
+  --global-neon-1: rgba(37,99,235,0.45);
+  --global-neon-2: rgba(37,99,235,0.18);
+}
+

@@ -1,0 +1,162 @@
+@import "./tokens.css";
+
+/* Reset / base */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: var(--s-4) 0 var(--s-2);
+  font-weight: 600;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 var(--s-4);
+  color: var(--text-muted);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Helpers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--s-4);
+}
+
+.card {
+  background: var(--bg-alt);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-sm);
+  padding: var(--s-6);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Utility classes */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-success {
+  color: var(--success);
+}
+.text-danger {
+  color: var(--danger);
+}
+.text-warning {
+  color: var(--warning);
+}
+
+.bg-gradient-accent {
+  background: var(--accent-gradient);
+  color: var(--text-inverse);
+}
+
+/* GLOBAL BORDER LAYER */
+.global-border-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999; /* above content, below any modals you may stack later */
+  /* smooth theme swap */
+  transition: opacity .25s ease;
+}
+
+/* Frame: we draw an outer glow + inner bevel using masks */
+.global-border-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;                   /* outer viewport rounding */
+  pointer-events: none;
+  /* A thick border via mask, then paint gradients inside it */
+  --fw: var(--global-frame-width);
+  -webkit-mask:
+    radial-gradient(closest-side, transparent calc(100% - var(--fw)), #000 calc(100% - var(--fw))) content-box,
+    linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask:
+    radial-gradient(closest-side, transparent calc(100% - var(--fw)), #000 calc(100% - var(--fw))) content-box,
+    linear-gradient(#000, #000);
+  mask-composite: exclude;
+
+  padding: var(--fw);
+  background:
+    /* inner bright spot following cursor */
+    radial-gradient(
+      circle var(--global-glow-radius) at var(--global-glow-x) var(--global-glow-y),
+      color-mix(in oklab, var(--global-neon-accent-1) 100%, transparent) 0%,
+      transparent 65%
+    ),
+    /* soft outer wash */
+    radial-gradient(
+      circle calc(var(--global-glow-radius) * 1.8) at var(--global-glow-x) var(--global-glow-y),
+      var(--global-neon-accent-2) 0%,
+      transparent 70%
+    ),
+    /* base neon ring */
+    linear-gradient(var(--global-neon-accent), var(--global-neon-accent));
+  mix-blend-mode: screen;   /* looks great in dark, gentle in light */
+  opacity: calc(.55 * var(--global-glow-strength));
+  filter:
+    drop-shadow(0 0 8px color-mix(in oklab, var(--global-neon-accent) 60%, transparent))
+    drop-shadow(0 0 24px color-mix(in oklab, var(--global-neon-accent) 35%, transparent));
+}
+
+/* Light mode slightly stronger base to keep definition */
+:root[data-theme="light"] .global-border-layer::before {
+  mix-blend-mode: multiply;
+  opacity: calc(.75 * var(--global-glow-strength));
+}
+
+/* Reduced motion preference → freeze the glow */
+@media (prefers-reduced-motion: reduce) {
+  .global-border-layer { opacity: .75; }
+}
+
+/* Fixed neon frame; no fill, no mask tricks */
+.global-frame {
+  position: fixed;
+  inset: var(--global-frame-inset);
+  border-radius: var(--global-frame-radius);
+  pointer-events: none;
+  z-index: 999;
+  /* Base ring + glow; scaled by strength variable */
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--global-neon) calc(70% * var(--global-glow-strength)), transparent),
+    0 0 calc(10px * var(--global-glow-strength)) 1px color-mix(in oklab, var(--global-neon-1) 100%, transparent),
+    0 0 calc(28px * var(--global-glow-strength)) 4px color-mix(in oklab, var(--global-neon-2) 100%, transparent);
+}
+
+/* Optional tiny inner bevel to separate content from the edge */
+.global-frame::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}

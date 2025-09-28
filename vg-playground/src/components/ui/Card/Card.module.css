@@ -1,0 +1,79 @@
+.base {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Mist glass effect */
+.mist {
+  background: rgba(20, 22, 28, 0.4); /* transparent dark layer */
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+/* Light theme variant */
+:root[data-theme="light"] .mist {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Content wrapper inside card */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: var(--s-6);
+  background: rgba(0, 0, 0, 0.35); /* darker overlay for text contrast */
+  border-radius: calc(var(--r-md) - 2px);
+}
+
+/* Light mode content */
+:root[data-theme="light"] .content {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+}
+
+/* Neon & hover classes unchanged */
+.neon {
+  position: relative;
+}
+.neon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.accent {
+  border-color: var(--neon-accent-border);
+  box-shadow:
+    0 0 0 1px var(--neon-accent-border),
+    0 0 12px 2px var(--neon-accent-glow-1),
+    0 0 36px 6px var(--neon-accent-glow-2);
+}
+.accent::after {
+  box-shadow:
+    inset 0 0 0 1px var(--neon-accent-border),
+    inset 0 0 20px 2px var(--neon-accent-glow-2);
+}
+
+.mono {
+  border-color: var(--neon-mono-border);
+  box-shadow:
+    0 0 0 1px var(--neon-mono-border),
+    0 0 12px 2px var(--neon-mono-glow-1),
+    0 0 36px 6px var(--neon-mono-glow-2);
+}
+.mono::after {
+  box-shadow:
+    inset 0 0 0 1px var(--neon-mono-border),
+    inset 0 0 20px 2px var(--neon-mono-glow-2);
+}
+
+.hoverable {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hoverable:hover {
+  transform: translateY(-1px);
+}
