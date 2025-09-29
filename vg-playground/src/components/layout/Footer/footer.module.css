@@ -1,0 +1,16 @@
+/* src/components/layout/Footer.module.css */
+.root {
+  border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  background: var(--bg);
+  color: var(--text-muted);
+}
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--s-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-sm);
+}
+.left, .right { display: inline-flex; gap: var(--s-2); align-items: center; }

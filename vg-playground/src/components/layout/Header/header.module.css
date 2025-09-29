@@ -1,0 +1,36 @@
+/* src/components/layout/Header.module.css */
+.root {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  backdrop-filter: blur(6px);
+}
+.inner {
+  height: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--s-3);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  justify-content: space-between;
+}
+.iconBtn {
+  border: 0;
+  background: none;
+  padding: 6px 8px;
+  border-radius: var(--r-md);
+  color: var(--text);
+}
+.iconBtn:hover { background: color-mix(in oklab, var(--text) 8%, transparent); }
+.brand {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+.right { display: inline-flex; align-items: center; gap: var(--s-2); }
